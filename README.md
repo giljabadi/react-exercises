@@ -1,70 +1,264 @@
-# Getting Started with Create React App
+# React | state   ( exercise solution )
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+### 1. What is the difference between the React's `function` components and `class` components ?
+<br>
 
-In the project directory, you can run:
+#### Function components
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Function components](https://reactjs.org/docs/components-and-props.html#function-and-class-components) have `props`  object which contains values passed to the component via props/attributes, and they don't have `render`  or lifecycle methods.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is the reason why they are called "functional stateless components".
 
-### `npm run build`
+[Function components](https://reactjs.org/docs/components-and-props.html#function-and-class-components)  `return` a JSX string.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Class components
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Class components have `state` and `props`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Class components have `render()` method which renders the JSX. When creating a class component it is mandatory to create this method, otherwise the component won't work.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br>
 
-## Learn More
+### 2.  What is the component `state` ?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+The `state` is an  *object*  defined inside of the React `class` component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+React `class`  components have React's built-in method `setState()` we must use to update the `state`.
 
-### Analyzing the Bundle Size
+React's built-in `setState()` method triggers *re-rendering of the DOM* when state is changed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Only the `class` component itself can define the `state` (object) or change it's existing `state` through [`this.setState()`](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br>
 
-### Deployment
+# Exercise
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
+
+
+
+### Task 1
+
+**a.** Using the npm package [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) create new project named `react-state-example`.
+Inside off the `src` directory create a new directory `components` to store your new components.
+
+
+
+<br>
+
+
+
+**b.** Create file `src/components/User.js` .
+
+Copy/paste the code provided in this gist (below) for the file `User.js`
+
+
+
+<br>
+
+
+
+**c.** Update the file `src/App.js`, by copy/pasting the code provided in this gist (below) for the file `App.js`.
+
+
+
+<br>
+
+
+
+### Task 2
+
+Add an additional property `bootcamp: 'Ironhack'` to the `state` object of the root component `App.js`.
+
+
+
+Pass/set this value as the prop ( `bootcampName={this.state.bootcamp}` ) to each of the `<User>` components in `App.js`.
+
+
+
+After setting the prop, update the `User.js` component. by adding an additional `<h2></h2>` tag that will show the value passed via the prop `bootcampName`.
+
+This `<h2>` tag should show the passed value as:
+
+ ```jsx
+<h2> Welcome To { /*Value from props bootcampName*/ }  </h2>
+ ```
+
+
+
+
+
+
+
+<br>
+
+
+
+### Task 3
+
+Edit the `clickHandler()` method in root component `App.js`, to change `state` property `backColor` to a random color every 5 clicks.
+
+Use the provided `colorMapper` function to get the random generated HEX color string.
+
+When updating the state you must use the react [`setState()`](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly) method.
+
+
+
+<br>
+
+Use the below snippet as the starting point:
+
+
+
+##### `src/App.js`
+
+```js
+//	src/App.js
+
+// ...
+
+//		...
+
+clickHandler = () => {
+  if ( /*Check click count if divisible by 5 */) {
+      
+      const newColor = this.colorMapper();
+      const updatedCount = this.state.clickCount + 1; 
+      
+      // Use `this.setState()` to update the state object
+  } else {
+     
+    const updatedCount = this.state.clickCount + 1;
+    this.setState({ clickCount: updatedCount });
+  }
+
+}
+```
+
+
+
+<br>
+
+
+
+### Bonus
+
+
+
+Create a new `class` component `Navbar.js`, which has a `state` with one property -`username: 'YOUR NAME'`.
+
+
+
+Display this value in the `<p>` tag which will be showing in the navbar.
+
+You can use the below snippet for your component elements.
+
+
+
+Create a `Navbar.css` file and import it in the newly created component file. Use the below code snippet to add styles for the navbar.
+
+
+
+
+
+**Remember to `export` the newly created `Navbar` component.**
+
+
+
+When done, `import` the `Navbar` component in `App.js` component and place it as the first element so that it displays on the top of the page.
+
+
+
+##### `src/components/Navbar.js`
+
+```jsx
+// src/components/Navbar.js
+
+// ...
+
+//		...
+
+//				...
+
+     <nav id='navbar'>
+       <ul>
+         <a href="#"><li>Home</li></a>
+         <a href="#"><li>Contact</li></a>
+         <a href="#"><li>About</li></a>
+       </ul>
+
+       <div className="nav-details">
+         <p className="nav-username"> Bob </p>
+       </div>
+     </nav>
+
+
+```
+
+
+
+<br>
+
+
+
+##### `src/components/Navbar.css`
+
+
+```css
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background:  #352275;
+  padding: 0px 40px;
+}
+
+#navbar li {
+  list-style: none;
+  display: inline-block;
+  margin: 0px 40px; 
+  font-size: 22px;
+  color:white;
+}
+
+div.nav-details > * {
+  display: inline-block;
+  color: royalblue;
+  font-size: 22px;
+}
+```
+
+
+
+
+<br>
+<br>
+
+## Additional resources
+
+<br>
+
+[DOM Events in React -  reactjs.org](https://reactjs.org/docs/events.html)
+
+[Function vs. class components](https://medium.com/@Zwenza/functional-vs-class-components-in-react-231e3fbd7108)
+
+[Understanding the Fundamentals of State in React](https://medium.com/the-andela-way/understanding-the-fundamentals-of-state-in-react-79c711be677f)
+
+[Binding event handlers in React components](https://medium.freecodecamp.org/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb)
